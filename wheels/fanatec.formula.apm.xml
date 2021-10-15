@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wheel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WheelID>fanatec.formula.apm</WheelID>
+  <LeftPedalID>RotationX</LeftPedalID>
+  <RightPedalID>RotationY</RightPedalID>
+  <DeviceName>fanatec</DeviceName>
+  <MaxPedalValue>65535</MaxPedalValue>
+</Wheel>
