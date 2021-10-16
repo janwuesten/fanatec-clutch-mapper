@@ -1,0 +1,59 @@
+name: .NET
+
+on:
+  push:
+    tags:
+      - v*
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: Setup .NET 5.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+        
+    - name: Get tag
+      id: tag
+      uses: dawidd6/action-get-tag@v1.0.0
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore --configuration release
+
+    - name: Create Release ZIP
+      uses: thedoctor0/zip-release@master
+      with:
+        type: 'zip'
+        filename: 'Fanatec-clutch-mapper-RELEASE.zip'
+        directory: './bin/Release'
+        path: 'Release'
+        
+    - name: Create GitHub release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{steps.tag.outputs.tag}}
+        release_name: Release ${{steps.tag.outputs.tag}}
+        body: Release ${{steps.tag.outputs.tag}}
+        draft: false
+        prerelease: false
+          
+    - name: Upload Release files
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: /bin/Release/Fanatec-clutch-mapper-RELEASE.zip
+        asset_name: Fanatec-clutch-mapper-RELEASE.zip
+        asset_content_type: application/zip
