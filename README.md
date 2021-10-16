@@ -32,9 +32,13 @@ It enables you to use your analog clutch pedals much more.
 You can download a prebuild .exe from the release tab. Please note that those prebuild .exe files are not code signed!
 
 ### Build from source code
-Clone the source code and open a terminal in the project directory. Run `dotnet publish --configuration Release`.
-A .exe File is created inside the bin/Release/net47 directory.
-This requires the .NET Build tools and nuget to be installed.
+Clone the source code and open a terminal in the project directory. Make sure dotnet is installed on your PC.
+
+Run `dotnet restore` to download all dependencies.
+
+Run `dotnet build --no-restore --configuration release --output bin/fanatec-clutch-mapper` to build the project.
+
+Building can also be done with different params! This will create a .exe file inside the bin/fanatec-clutch-mapper directory.
 
 ## Configuration
 After opening the program for the first time it will create a `config.xml` beside the .exe file as well as as `wheels` directory with wheel configuration files. Open the `config.xml` with any text editor of your choice.
