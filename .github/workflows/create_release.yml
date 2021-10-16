@@ -26,7 +26,7 @@ jobs:
       run: dotnet restore
       
     - name: Build
-      run: dotnet build --no-restore --configuration release
+      run: dotnet build --no-restore --configuration release --output bin/fanatec-clutch-mapper
 
     - name: Create Release ZIP
       uses: thedoctor0/zip-release@master
@@ -34,7 +34,7 @@ jobs:
         type: 'zip'
         filename: 'Fanatec-clutch-mapper-RELEASE.zip'
         directory: '.'
-        path: './bin/release/net47/'
+        path: './bin/fanatec-clutch-mapper/'
         
     - name: Create GitHub release
       id: create_release
