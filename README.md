@@ -1,3 +1,6 @@
+[![Code QL](https://github.com/janwuesten/fanatec-clutch-mapper/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/janwuesten/fanatec-clutch-mapper/actions/workflows/codeql-analysis.yml)
+[![Create release](https://github.com/janwuesten/fanatec-clutch-mapper/actions/workflows/create_release.yml/badge.svg)](https://github.com/janwuesten/fanatec-clutch-mapper/actions/workflows/create_release.yml)
+
 # Fanatec analog clutch to digital
 
 ## Introduction
